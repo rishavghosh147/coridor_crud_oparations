@@ -8,7 +8,7 @@ app=Flask(__name__)
 
 app.config['MONGO_URI']='mongodb://localhost:27017/'
 mongo=MongoClient(app.config['MONGO_URI'])
-db=mongo.corider # here corider is my database name
+db=mongo.corider # here corider is my database
 
 
 @app.route('/users')
@@ -31,7 +31,7 @@ def view_user(id):
 @app.route('/users',methods=['POST'])
 def add_user():
     data=json.loads(request.data)
-    if len(data)==3 and 'name' in data and 'email' in data and 'password' in data and data['name'] and data['email'] and data['password']: # we can able to reduce this line and output will be same if we use marshmallow
+    if len(data)==3 and 'name' in data and 'email' in data and 'password' in data and data['name'] and data['email'] and data['password']: # i can able to reduce this line and output will be same if we use marshmallow
         name=data['name']
         email=data['email']
         password=generate_password_hash(data['password'])
